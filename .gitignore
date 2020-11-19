@@ -41,7 +41,8 @@
 /mitsuba/build/[D,d]ebug
 /mitsuba/data
 /mitsuba/dist
-
+/mitsuba/build
+/scenes
 # Rendering artifacts
 *.log
 *.mip
@@ -50,3 +51,33 @@
 
 *.vcxproj.user
 /.vscode
+._.DS_Store
+._collada-dom-dev_2.4.0-1_amd64.deb
+collada-dom-dev_2.4.0-1_amd64.deb
+consistent_simulator.py
+LICENSE
+mitsuba/._.DS_Store
+mitsuba/._dependencies
+mitsuba/._frame0.exr
+mitsuba/._frame1.exr
+mitsuba/._frame2.exr
+mitsuba/._frame3.exr
+mitsuba/build/config-linux-gcc-debug.py
+mitsuba/build/config-linux-gcc.py
+mitsuba/build/config-linux-icl.py
+mitsuba/build/config-macos10.9-clang-x86_64.py
+mitsuba/build/config-win64-icl.py
+mitsuba/build/config-win64-msvc2013-debug.py
+mitsuba/build/config-win64-msvc2013.py
+mitsuba/build/mitsuba-msvc2013.sln
+mitsuba/build/mitsuba-msvc2013.vcxproj
+mitsuba/build/mitsuba-msvc2013.vcxproj.filters
+mitsuba/build/SConscript.configure
+mitsuba/build/SConscript.configure.bak
+mitsuba/build/SConscript.install
+mitsuba/build/SConscript.install.bak
+*.exr
+*.png
+*.obj
+
+*.jpg
