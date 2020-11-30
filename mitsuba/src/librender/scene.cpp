@@ -340,7 +340,9 @@ void Scene::initialize() {
 				"instancing or other kinds of procedural geometry, the effective number of primitives is "
 				SIZE_T_FMT ".", primitiveCount, effPrimitiveCount);
 		}
-
+		//Added @bingxu
+		// m_sensor->setShutterOpen(1);
+		// m_sensor->setShutterOpenTime(2);
 		/* Build the kd-tree */
 		m_kdtree->build();
 
@@ -443,9 +445,17 @@ bool Scene::preprocess(RenderQueue *queue, const RenderJob *job,
 
 bool Scene::render(RenderQueue *queue, const RenderJob *job,
 		int sceneResID, int sensorResID, int samplerResID) {
+	
 	m_sensor->getFilm()->clear();
-	return m_integrator->render(this, queue, job, sceneResID,
+	//ADDED and CHANGED @bingxu
+	// return m_integrator->render(this, queue, job, sceneResID,
+	// 	sensorResID, samplerResID);
+	bool frame1res = m_integrator->render(this, queue, job, sceneResID,
 		sensorResID, samplerResID);
+	m_sensor->setShutterOpen(1);
+	bool frame2res = m_integrator->render(this, queue, job, sceneResID,
+		sensorResID, samplerResID);
+	return frame1res && frame2res;
 }
 
 void Scene::cancel() {

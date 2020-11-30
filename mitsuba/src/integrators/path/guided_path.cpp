@@ -787,7 +787,7 @@ struct STreeNode {
         if (!isLeaf) {
             for (auto c : children) {
                 result = std::max(result, 1 + nodes[c].depth(nodes));
-            }
+            }// didn't use node....?? TO_CLARIFY
         }
 
         return result;
@@ -834,7 +834,7 @@ struct STreeNode {
 
                     nodes[children[i]].record(min1, max1, min2, size2, rec, directionalFilter, bsdfSamplingFractionLoss, nodes);
                 }
-            }
+            } 
         }
     }
 

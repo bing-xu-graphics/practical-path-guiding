@@ -257,6 +257,7 @@ void SceneHandler::startElement(const XMLCh* const xmlName,
 			break;
 		case EAnimation: {
 				m_animatedTransform = new AnimatedTransform();
+				XMLLog(EWarn, "Got animation attribute in start element!!!============================" );
 			}
 			break;
 		default:
@@ -625,6 +626,7 @@ void SceneHandler::endElement(const XMLCh* const xmlName) {
 			break;
 
 		case EAnimation: {
+				XMLLog(EWarn, "GOT Animation in end element =============================");
 				m_animatedTransform->sortAndSimplify();
 				context.parent->properties.setAnimatedTransform(
 					context.attributes["name"], m_animatedTransform);
@@ -637,6 +639,7 @@ void SceneHandler::endElement(const XMLCh* const xmlName) {
 					context.parent->properties.setTransform(
 						context.attributes["name"], m_transform);
 				} else {
+					XMLLog(EWarn, "Parsing time for animated frames =============================");
 					Float time = parseFloat("time", context.attributes["time"]);
 					m_animatedTransform->appendTransform(time, m_transform);
 				}
@@ -712,12 +715,14 @@ void SceneHandler::endElement(const XMLCh* const xmlName) {
 					object = m_pluginManager->createObject(tag.second, props);
 
 					if (!trafo->isStatic()) {
+						XMLLog(EWarn, "======Instantiating shapegroup due to animation?? =============================");
 						object = m_pluginManager->createObject(tag.second, props);
 						/* If the object has children, append them */
 						for (std::vector<std::pair<std::string, ConfigurableObject *> >
 								::iterator it = context.children.begin();
 								it != context.children.end(); ++it) {
 							if (it->second != NULL) {
+								XMLLog(EWarn, "======Add child!! =============================");
 								object->addChild(it->first, it->second);
 								it->second->setParent(object);
 								it->second->decRef();
